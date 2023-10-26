@@ -1,0 +1,8 @@
+node_modules/
+.vscode/
+dist/
+build/
+package-lock.json
+wrangler.toml
+.DS_Store  # macOS
+Thumbs.db  # Windows
