@@ -123,14 +123,10 @@ async receive(message, sender, requestReply) {
 }
 
 async reply(sender) {
-  console.log('replying', this.name, 'replying to', sender.name)
-  console.log(this.messages)
-  console.log(this.trigger, 'trigger')
   const reply = await this.aiGateway.generateReply(this.messages, this.functions);
     if (reply.function_call) {
           let arg = reply.function_call.arguments;
           let func = reply.function_call.name;
-
           return this[func](arg, sender);
      }
   return reply;
