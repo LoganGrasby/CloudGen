@@ -1,4 +1,4 @@
-import { UserAgent, AssistantAgent } from '../src/index';
+import { UserAgent, AssistantAgent } from 'cloudgen';
 
 export default {
   async fetch(request, env) {
