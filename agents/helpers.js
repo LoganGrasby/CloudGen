@@ -23,7 +23,6 @@ export class ResearchHelper {
           }
           searchResults.push(...result);
         }
-        console.log(JSON.stringify(searchResults, null, 2))
         return searchResults;
       }
     

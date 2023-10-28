@@ -1,4 +1,4 @@
-import { UserProxyAgent } from '../agents/userProxyAgent';
+import { UserAgent } from '../agents/userAgent';
 
 export class GroupChat {
     constructor(agents, maxRound = 10, adminName = 'Admin') {
@@ -29,7 +29,7 @@ export class GroupChat {
     let index = this.agents.indexOf(lastSpeaker);
     while (true) {
       index = (index + 1) % this.agents.length;
-      if (this.agents[index] instanceof UserProxyAgent || index === this.lastSpeakerIndex) {
+      if (this.agents[index] instanceof UserAgent || index === this.lastSpeakerIndex) {
         continue;
       }
       this.lastSpeakerIndex = index;
@@ -54,21 +54,15 @@ export class GroupChat {
       }
   
       const messagesToSend = [...this.messages];
-  
       const name = await selector.aiGateway.generateReply(messagesToSend);
-  
-      if (!name) {
+
+      if (!name.function_call) {
           return this.nextAgent(selector);
       }
-  
-      try {
-          let nextAgent = this.agentByName(name);
+
+          let nextAgent = this.agentByName(name.function_call.arguments.name);
           if(!nextAgent) {return this.nextAgent(lastSpeaker)}
           return nextAgent;
-      } catch (error) {
-          console.log("error:", error)
-          throw error;
-      }
   }
 
     participantRoles() {

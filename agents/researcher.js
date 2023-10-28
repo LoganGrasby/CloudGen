@@ -5,10 +5,10 @@ export class Researcher extends ConversationAgent {
     constructor(env, name, config = {}, groupChat = null) {
       const thisAgentConfig = {
         state: {},
-        systemMessage: `default system message`,
+        systemMessage: `You are a researcher. Search for information. If at first you don't succeed, try try again`,
         llmConfig: {
           provider: 'cloudflare',
-          model: '@cf/meta/llama-2-7b-chat-int8',
+          model: 'gpt-3.5-turbo',
         },
         maxConsecutiveAutoReply: null,
         functions: [
@@ -41,7 +41,6 @@ export class Researcher extends ConversationAgent {
     }
     async search({ query, resource }, sender) {
       try {
-        console.log('in search', query, resource)
         const searchResults = await this.helper.generateAndSearch(query, resource);
         this.messages.push({
           role: 'function',

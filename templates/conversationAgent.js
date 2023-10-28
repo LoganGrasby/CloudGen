@@ -35,6 +35,7 @@ export class ConversationAgent extends Agent {
     this.functions = agentConfig.functions || null;
     this.helper = agentConfig.helper || null;
     this.aiGateway = new AIGateway(this.llmConfig, this.env, this.functions);
+    this.isGroupChat = true;
   }
 
 updateSystemMessage(systemMessage) {
@@ -62,6 +63,7 @@ async clearHistory() {
 }
 
 prepareChat(recipient, clearHistory) {
+  recipient.isGroupChat = false;
   this.maxConsecutiveAutoReply = 0;
   recipient.maxConsecutiveAutoReply = 0;
   if (clearHistory) {
@@ -79,7 +81,9 @@ async startChat(recipient, message, options = {}) {
   if(!requestReply) {
     return
   }
-  return await this.send({ role: "user", content: message, name: this.name }, recipient, requestReply);
+  let reply = await this.send({ role: "user", content: message, name: this.name }, recipient, requestReply);
+  console.log(`%c${recipient.name}: ${JSON.stringify(reply)}`, `color: red;`);
+  return reply;
 }
 
 async send(message, recipient, requestReply = true) {
@@ -99,15 +103,15 @@ async receive(message, sender, requestReply) {
   if (typeof message !== 'object' || (!message.content && !message.function_call)) {
     throw new Error("Message must be an object and have either 'content' or 'function_call'.");
   }
-  console.log(this.groupChat)
-  if(!this.groupChat){
+  console.log('is group chat: ', this.isGroupChat);
+  if(!this.isGroupChat) {
     message.role = 'user'
     this.saveMessage(message);
   }
   for (let msg of this.messages) {
     if (msg.name === this.name) {
         msg.role = 'assistant';
-    } else if(msg.role !== "system" && msg.role !== "function"){
+    } else if (msg.role !== "system" && msg.role !== "function") {
       msg.role = 'user'
     }
   }
@@ -129,6 +133,6 @@ async reply(sender) {
           let func = reply.function_call.name;
           return this[func](arg, sender);
      }
-  return reply;
- }
+    return reply;
+  }
 }

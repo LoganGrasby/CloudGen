@@ -1,4 +1,4 @@
-import { Ai } from '@cloudflare/ai'
+import { Ai } from '@cloudflare/ai';
 
 export class AIGateway {
   constructor(llmConfig, env, functions = null) {
@@ -13,14 +13,11 @@ export class AIGateway {
     //wrangler.toml
     //[ai]
     //binding = "AI"
-    const ai = new Ai(this.env)
-    const { response: reply } = await ai.run(
-      '@cf/meta/llama-2-7b-chat-int8',
-      {
-        messages: messages
-      }
-    );
-    return { content: reply }
+    const ai = new Ai(this.env);
+    const { response: reply } = await ai.run('@cf/meta/llama-2-7b-chat-int8', {
+      messages: messages,
+    });
+    return { content: reply };
   }
 
   async generateOaiReply(messages) {
@@ -30,11 +27,11 @@ export class AIGateway {
       messages: messages,
       max_tokens: this.max_tokens,
     };
-    console.log(this.agent)
     if (this.functions) {
       data['functions'] = this.functions;
     }
-    const strData = JSON.stringify(data);
+    const strData = JSON.stringify(data, null, 2);
+    console.log(strData)
     const options = {
       method: 'POST',
       headers: {
@@ -45,7 +42,7 @@ export class AIGateway {
     };
     const response = await fetch(url, options);
     const resp = await response.json();
-    console.log(JSON.stringify(resp))
+    console.log(resp)
     if (resp.choices[0].finish_reason === 'function_call') {
       let message = resp.choices[0].message;
       let arg = JSON.parse(message.function_call.arguments);
@@ -63,7 +60,7 @@ export class AIGateway {
                   'Your function call could not be parsed. Please try again. Make sure to include all required parameters: ' +
                   requiredParams.join(', '),
               },
-            }
+            };
           }
         }
       }
@@ -110,12 +107,11 @@ export class AIGateway {
     if (!Array.isArray(messages) || !messages.every((msg) => typeof msg === 'object' && msg !== null && !Array.isArray(msg))) {
       throw new Error('Invalid input: Messages must be an array of objects');
     }
-    console.log(messages)
     switch (this.provider) {
       case 'openai':
         return this.generateOaiReply(messages, model);
       case 'cloudflare':
-        return this.generateCloudflareReply(messages, model)
+        return this.generateCloudflareReply(messages, model);
       case 'perplexity':
         return this.generatePerplexityReply(messages, model);
       default:
