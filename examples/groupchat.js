@@ -3,7 +3,7 @@ import { UserAgent, AssistantAgent, GroupChat, GroupChatManager } from 'cloudgen
 export default {
   async fetch(request, env, ctx) {
     const { message } = await request.json();
-
+    //run wrangler dev --remote and open dev tools to visualize the conversation
     //Define the user. It does not respond in the conversation by default.
     const user = new UserAgent(env, 'User');
 
