@@ -15,6 +15,11 @@ Install wrangler:
 npm i wrangler -g
 ```
 
+Create a new project:
+```bash
+wrangler init
+```
+
 ## Quick start
 
 ```bash
