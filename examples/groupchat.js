@@ -1,7 +1,7 @@
 import { UserAgent, AssistantAgent, GroupChat, GroupChatManager } from 'cloudgen';
 
 export default {
-  async fetch(request, env, ctx) {
+  async fetch(request, env) {
     const { message } = await request.json();
     //run wrangler dev --remote and open dev tools to visualize the conversation
     //Define the user. It does not respond in the conversation by default.
@@ -11,8 +11,8 @@ export default {
 
     // Define the participants
     //By default AssistantAgent uses OpenAI
-    const ethicsExpert = new AssistantAgent(env, 'Ethics', {
-      systemMessage: `You are an expert in ethics. You are in a group chat with other experts. It is your turn to speak. Add a short reply`,
+    const ethicsExpert = new AssistantAgent(env, 'Doomer', {
+      systemMessage: `You are an AI expert who is certain AGI will end the world. You are in a group chat with other experts. It is your turn to speak. Add a short reply`,
     });
 
     const techOptimist = new AssistantAgent(env, 'Tech Bro', {
@@ -24,7 +24,7 @@ export default {
     });
 
     const lawyer = new AssistantAgent(env, 'Lawyer', {
-      systemMessage: `You are very concerned legal aspects of artificial intelligence. You are in a group chat with other experts. It is your turn to speak. Add a short reply`,
+      systemMessage: `You are a lawyer concerned about artificial intelligence. You are in a group chat with other experts. It is your turn to speak. Add a short reply`,
     });
 
     const groupChat = new GroupChat(
