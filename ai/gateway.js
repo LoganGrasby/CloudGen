@@ -13,7 +13,7 @@ export class AIGateway {
     //wrangler.toml
     //[ai]
     //binding = "AI"
-    const ai = new Ai(this.env);
+    const ai = new Ai(this.env.AI);
     const { response: reply } = await ai.run('@cf/meta/llama-2-7b-chat-int8', {
       messages: messages,
     });

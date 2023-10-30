@@ -25,7 +25,6 @@ export class ResearchHelper {
         }
         return searchResults;
       }
-    
       async generateQueries(message) {
         try {
         const { response: queries } = await this.ai.run(
@@ -45,7 +44,6 @@ export class ResearchHelper {
             throw new Error(error)
         }
       }
-    
       async googleSearch(query) {
         const url = `https://customsearch.googleapis.com/customsearch/v1?q=${encodeURIComponent(query)}&cx=${this.env.cx}&key=${this.env.googleCustomSearchAPI}`;
         const response = await fetch(url, {
@@ -54,7 +52,6 @@ export class ResearchHelper {
             'Content-Type': 'application/json',
           },
         });
-    
         const data = await response.json();
         return data.items.map((item) => ({
           title: item.title,

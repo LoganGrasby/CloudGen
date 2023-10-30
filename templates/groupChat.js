@@ -41,7 +41,11 @@ export class GroupChat {
     }
 
     selectSpeakerMsg() {
-        return `You are in a role play game. The following roles are available:\n${this.participantRoles()}.\n\nRead the following conversation.\nThen select the next role from ${this.agentNames} to play. Only return the role.`;
+        return `You are in a role play game. The following roles are available:\n
+        ${this.participantRoles()}.\n\n
+        Read the following conversation.\n
+        Then select the next role from ${this.agentNames} to play. 
+        Only return the role.`;
     }
 
     async selectSpeaker(lastSpeaker, selector) {

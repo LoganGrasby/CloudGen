@@ -76,13 +76,13 @@ prepareChat(recipient, clearHistory) {
 }
 
 async startChat(recipient, message, options = {}) {
-  const { clearHistory = true, silent = false, requestReply = true } = options;
+  const { clearHistory = false, silent = false, requestReply = true } = options;
   this.prepareChat(recipient, clearHistory);
   if(!requestReply) {
     return
   }
   let reply = await this.send({ role: "user", content: message, name: this.name }, recipient, requestReply);
-  console.log(`%c${recipient.name}: ${JSON.stringify(reply)}`, `color: red;`);
+  console.log(`%c${recipient.name}: ${reply.content}`, `color: red;`);
   return reply;
 }
 
@@ -103,7 +103,6 @@ async receive(message, sender, requestReply) {
   if (typeof message !== 'object' || (!message.content && !message.function_call)) {
     throw new Error("Message must be an object and have either 'content' or 'function_call'.");
   }
-  console.log('is group chat: ', this.isGroupChat);
   if(!this.isGroupChat) {
     message.role = 'user'
     this.saveMessage(message);

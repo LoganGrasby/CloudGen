@@ -10,34 +10,36 @@ export default {
     //Let's debate about building AGI
 
     // Define the participants
+    //By default AssistantAgent uses OpenAI
     const ethicsExpert = new AssistantAgent(env, 'Ethics', {
       systemMessage: `You are an expert in ethics. You are in a group chat with other experts. It is your turn to speak. Add a short reply`,
     });
 
-    const techOptimist = new AssistantAgent(env, 'Technology', {
+    const techOptimist = new AssistantAgent(env, 'Tech Bro', {
       systemMessage: `You are a tech optimist and support developing AGI as fast as possible. Your are in a group chat with other experts. It is your turn to speak. Add a short reply`,
     });
 
-    const applicationsExpert = new AssistantAgent(env, 'Applications', {
+    const economist = new AssistantAgent(env, 'Economist', {
       systemMessage: `You are an expert in economics and you are opinionated. You are in a group chat with other experts. It is your turn to speak. Add a short reply`,
     });
 
-    const lawExpert = new AssistantAgent(env, 'Law', {
+    const lawyer = new AssistantAgent(env, 'Lawyer', {
       systemMessage: `You are very concerned legal aspects of artificial intelligence. You are in a group chat with other experts. It is your turn to speak. Add a short reply`,
     });
 
     const groupChat = new GroupChat(
-      [user, ethicsExpert, techOptimist, applicationsExpert, lawExpert], // Add all your agents here
+      [user, ethicsExpert, techOptimist, lawyer, economist], // Add all your agents here
       3, // Limit the maximum number of turns
       'Admin' // Admin name. Not currently used for anything.
     );
 
-    //Without significant tuning of your prompt and parameters it's best to use GPT-4 here.
+    //Without significant tuning of your prompt and parameters it's best to use GPT-4 here while testing.
     const manager = new GroupChatManager(
       env,
       'Manager',
       {
         systemMessage: 'Group chat manager.',
+        //force a function call to select a speaker.
         function_call: { name: 'selectSpeaker' },
         llmConfig: {
           model: 'gpt-4'

@@ -1,24 +1,6 @@
-# CloudGen
-An AI agent framework built for the Cloudflare Developer Platform. This project is early and will include more examples shortly.
 
-##Why do I need this?
-AI agent systems work best when they are "multi-agent". This is because different tasks benefit from access to different models and/or different parameter configurations.
-CloudGen implements an opinionated approach purposefully similar to AutoGen (https://microsoft.github.io/autogen/) but with the intention of being optimized for the Cloudflare developer platform.
-CloudGen supports agent "group chats" to improve problem solving. It isolates conversation history and agent state within a single Durable Object. Future examples will demonstrate why this is important.
-
-##Getting started
-Install wrangler
-`npm i wrangler -g`
-
-##Quick start
-
-`npm i cloudgen`
-
-The following is a simple single agent example. It requires that the Memory class be deployed as a durable object.
-See /examples for an example wrangler.toml configuration. This example defaults to Cloudflare's Llama-2.
-
-
-`import { UserAgent, AssistantWithMemory } from 'cloudgen';
+//We import a custom assistant class with methods for saving and retrieving messages. These methods override the methods of the parent class.
+import { UserAgent, AssistantWithMemory } from 'cloudgen';
 
 export default {
   async fetch(request, env) {
@@ -47,14 +29,22 @@ export class Memory {
       const user = new UserAgent(this.env, 'User', { state: this.state });
       //By default this agent uses Cloudflare's Llama-2
       const assistant = new AssistantWithMemory(this.env, 'Assistant', 
-      { 
-        state: this.state,
+      { state: this.state,
         systemMessage: 'You are a friendly AI assistant.'
-      });
+        });
       //We populate the recipient with message history
       await assistant.getMessages();
       //the message is sent from the user to the recipient
       let response = await user.startChat(assistant, message);
       return new Response (JSON.stringify(response), { status: 200 })
     }
-  }`
+  }
+// wrangler.toml
+// [[migrations]]
+// tag = "v1" # Should be unique for each entry
+// new_classes = ["Memory"] # Array of new classes
+
+// [durable_objects]
+// bindings = [
+// {name = "MEMORY", class_name = "Memory"}
+// ]
