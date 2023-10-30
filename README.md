@@ -35,43 +35,65 @@ import { UserAgent, AssistantWithMemory } from 'cloudgen';
 
 export default {
   async fetch(request, env) {
-    const { message, roomName } = await request.json();
-    if (!message || !roomName) {
-      throw new Error('roomName and message are required');
+    try {
+      const { message, roomName } = await request.json();
+      if (!message || !roomName) {
+        throw new Error('roomName and message are required');
+      }
+      const response = await chatWithMemory(env, roomName, message)
+      return response;
+    } catch (error) {
+      console.error(error);
+      throw error;
     }
-    const response = await chatWithMemory(env, roomName, message)
-    return response;
   },
 };
 
 async function chatWithMemory(env, roomName, message) {
-  //Each unique roomName creates its own durable object.
+  // Each unique roomName creates its own durable object.
   const id = env.MEMORY.idFromName(roomName);
-  return env.MEMORY.get(id).fetch('https://azule', { method: 'POST', body: JSON.stringify({ message }) });
+  return env.MEMORY.get(id).fetch('https://azule', { 
+    method: 'POST', 
+    body: JSON.stringify({ message }) 
+ });
 }
 
-//here we define our Durable Object class.
+// Here we define our Durable Object class.
 export class Memory {
-    constructor(state, env) {
-      this.state = state;
-      this.env = env;
-    }
-  async fetch(request) {
-      const { message } = await request.json();
+  constructor(state, env) {
+    this.state = state;
+    this.env = env;
+  }
 
-      //The user agent (in this configuration) does not do much
-      const user = new UserAgent(this.env, 'User', { state: this.state });
-      //By default this agent uses Cloudflare's Llama-2. Currently OpenAI and Perplexity are also supported.
-      const assistant = new AssistantWithMemory(this.env, 'Assistant', 
-      { 
-        state: this.state,
-        systemMessage: 'You are a friendly AI assistant.'
-      });
-      //We populate the recipient with message history
-      await assistant.getMessages();
-      //the message is sent from the user to the recipient
-      let response = await user.startChat(assistant, message);
-      return new Response (JSON.stringify(response), { status: 200 })
+  async fetch(request) {
+    try {
+      const { message } = await request.json();
+      const response = await this.startChat(message);
+      return new Response(JSON.stringify(response), { status: 200 });
+    } catch (error) {
+      console.error(error);
+      throw error;
     }
   }
+
+  async startChat(message) {
+    // The user agent (in this configuration) does not do much.
+    const user = new UserAgent(this.env, 'User', { state: this.state });
+
+    // By default this agent uses Cloudflare's Llama-2. 
+    //Currently OpenAI and Perplexity are also supported.
+    const assistant = new AssistantWithMemory(this.env, 'Assistant', 
+    { 
+      state: this.state,
+      systemMessage: 'You are a friendly AI assistant.'
+    });
+
+    // We populate the recipient with message history.
+    await assistant.getMessages();
+
+    // The message is sent from the user to the recipient.
+    let response = await user.startChat(assistant, message);
+    return response;
+  }
+}
 ```
