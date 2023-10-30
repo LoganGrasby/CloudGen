@@ -1,24 +1,31 @@
 # CloudGen
 An AI agent framework built for the Cloudflare Developer Platform. This project is early and will include more examples shortly.
 
-##Why do I need this?
+## Why do I need this?
+
 AI agent systems work best when they are "multi-agent". This is because different tasks benefit from access to different models and/or different parameter configurations.
-CloudGen implements an opinionated approach purposefully similar to AutoGen (https://microsoft.github.io/autogen/) but with the intention of being optimized for the Cloudflare developer platform.
+CloudGen implements an opinionated approach purposefully similar to [AutoGen](https://microsoft.github.io/autogen/) but with the intention of being optimized for the Cloudflare developer platform.
 CloudGen supports agent "group chats" to improve problem solving. It isolates conversation history and agent state within a single Durable Object. Future examples will demonstrate why this is important.
 
-##Getting started
-Install wrangler
-`npm i wrangler -g`
+## Getting started
 
-##Quick start
+Install wrangler:
 
-`npm i cloudgen@latest`
+```bash
+npm i wrangler -g
+```
+
+## Quick start
+
+```bash
+npm i cloudgen@latest
+```
 
 The following is a simple single agent example. It requires that the Memory class be deployed as a durable object.
 See /examples for an example wrangler.toml configuration. This example defaults to Cloudflare's Llama-2.
 
-
-`import { UserAgent, AssistantWithMemory } from 'cloudgen';
+```javascript
+import { UserAgent, AssistantWithMemory } from 'cloudgen';
 
 export default {
   async fetch(request, env) {
@@ -57,4 +64,5 @@ export class Memory {
       let response = await user.startChat(assistant, message);
       return new Response (JSON.stringify(response), { status: 200 })
     }
-  }`
+  }
+```
