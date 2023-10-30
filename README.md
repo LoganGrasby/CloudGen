@@ -12,7 +12,7 @@ Install wrangler
 
 ##Quick start
 
-`npm i cloudgen`
+`npm i cloudgen@latest`
 
 The following is a simple single agent example. It requires that the Memory class be deployed as a durable object.
 See /examples for an example wrangler.toml configuration. This example defaults to Cloudflare's Llama-2.
