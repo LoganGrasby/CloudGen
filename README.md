@@ -30,6 +30,7 @@ The following is a simple single agent example. It requires that the Memory clas
 See /examples for an example wrangler.toml configuration. This example defaults to Cloudflare's Llama-2.
 
 ```javascript
+//src/index.js
 import { UserAgent, AssistantWithMemory } from 'cloudgen';
 
 export default {
