@@ -44,6 +44,7 @@ async function chatWithMemory(env, roomName, message) {
   return env.MEMORY.get(id).fetch('https://azule', { method: 'POST', body: JSON.stringify({ message }) });
 }
 
+//here we define our Durable Object class.
 export class Memory {
     constructor(state, env) {
       this.state = state;
@@ -51,8 +52,10 @@ export class Memory {
     }
   async fetch(request) {
       const { message } = await request.json();
+
+      //The user agent (in this configuration) does not do much
       const user = new UserAgent(this.env, 'User', { state: this.state });
-      //By default this agent uses Cloudflare's Llama-2
+      //By default this agent uses Cloudflare's Llama-2. Currently OpenAI and Perplexity are also supported.
       const assistant = new AssistantWithMemory(this.env, 'Assistant', 
       { 
         state: this.state,
