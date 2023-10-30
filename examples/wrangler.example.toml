@@ -1,0 +1,15 @@
+name = "cloudgentest"
+main = "memory.js"
+compatibility_date = "2023-10-26"
+
+[ai]
+binding = "AI"
+
+[[migrations]]
+tag = "v1" # Should be unique for each entry
+new_classes = ["Memory"] # Array of new classes
+
+[durable_objects]
+bindings = [
+{name = "MEMORY", class_name = "Memory"}
+]
