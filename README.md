@@ -66,14 +66,9 @@ export class Memory {
   }
 
   async fetch(request) {
-    try {
       const { message } = await request.json();
       const response = await this.startChat(message);
       return new Response(JSON.stringify(response), { status: 200 });
-    } catch (error) {
-      console.error(error);
-      throw error;
-    }
   }
 
   async startChat(message) {
@@ -97,3 +92,5 @@ export class Memory {
   }
 }
 ```
+
+See /examples for more. More examples coming soon.
