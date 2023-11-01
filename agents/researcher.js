@@ -5,7 +5,8 @@ export class Researcher extends ConversationAgent {
     constructor(env, name, config = {}, groupChat = null) {
       const thisAgentConfig = {
         state: {},
-        systemMessage: `You are a researcher. Search for information. If at first you don't succeed, try try again`,
+        systemMessage: `You are a researcher. Search for information. 
+        If at first you don't succeed, try try again`,
         llmConfig: {
           provider: 'cloudflare',
           model: 'gpt-3.5-turbo',

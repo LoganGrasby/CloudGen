@@ -15,7 +15,7 @@ export default {
       systemMessage: `You are an AI expert who is certain AGI will end the world. You are in a group chat with other experts. It is your turn to speak. Add a short reply`,
     });
 
-    const techOptimist = new AssistantAgent(env, 'Tech Bro', {
+    const techOptimist = new AssistantAgent(env, 'Tech Optimist', {
       systemMessage: `You are a tech optimist and support developing AGI as fast as possible. Your are in a group chat with other experts. It is your turn to speak. Add a short reply`,
     });
 

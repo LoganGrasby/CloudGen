@@ -1,4 +1,5 @@
 import { Ai } from '@cloudflare/ai';
+import { ConversationAgent } from '../templates/conversationAgent';
 
 export class LongTermMemory extends ConversationAgent {
     constructor(env, name, config = {}, groupChat = null,) {
