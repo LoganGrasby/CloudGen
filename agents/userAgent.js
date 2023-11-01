@@ -4,7 +4,7 @@ export class UserAgent extends ConversationAgent {
     constructor(env, name, config = {}, groupChat = null) {
       const defaultConfig = {
         state: {},
-        systemMessage: `You are helpful`,
+        systemMessage: `The user who we want to reply to.`,
         llmConfig: {
           provider: 'openai',
           model: 'gpt-3.5-turbo',

@@ -8,7 +8,8 @@
   },
   "dependencies": {
     "@cloudflare/ai": "^1.0.22",
-    "cheerio": "^1.0.0-rc.12"
+    "cheerio": "^1.0.0-rc.12",
+    "postal-mime": "^1.0.16"
   },
   "author": "Logan Grasby",
   "license": "Apache 2.0"

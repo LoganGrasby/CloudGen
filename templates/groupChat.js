@@ -41,7 +41,8 @@ export class GroupChat {
     }
 
     selectSpeakerMsg() {
-        return `You are in a role play game. The following roles are available:\n
+        return `You are managing a groupchat to provide a response to the user. 
+        The following roles and actions are available:\n
         ${this.participantRoles()}.\n\n
         Read the following conversation.\n
         Then select the next role from ${this.agentNames} to play. 
