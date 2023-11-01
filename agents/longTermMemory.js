@@ -1,6 +1,6 @@
 import { Ai } from '@cloudflare/ai';
 
-export class AssistantAgent extends ConversationAgent {
+export class LongTermMemory extends ConversationAgent {
     constructor(env, name, config = {}, groupChat = null,) {
       const defaultConfig = {
         state: {},
