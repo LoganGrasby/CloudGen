@@ -1,4 +1,4 @@
-import { UserAgent, AssistantAgent, GroupChat, GroupChatManager } from 'cloudgen';
+import { UserAgent, AssistantAgent, GroupChat, GroupChatManager } from '../src/index';
 
 export default {
   async fetch(request, env) {

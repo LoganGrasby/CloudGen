@@ -51,13 +51,13 @@ export class LongTermMemory extends ConversationAgent {
       const lastMessage = messages[messages.length - 1];
       const message = lastMessage.content;
 
-      const { results } = await c.env.DB.prepare("INSERT INTO notes (message) VALUES (?) RETURNING *")
+      const { results } = await this.env.DB.prepare("INSERT INTO notes (message) VALUES (?) RETURNING *")
         .bind(message)
         .run()
 
       const record = results.length ? results[0] : null
     
-      const { data } = await ai.run('@cf/baai/bge-base-en-v1.5', { text: [message] })
+      const { data } = await this.ai.run('@cf/baai/bge-base-en-v1.5', { text: [message] })
       const values = data[0]
       
       const { id } = record
@@ -101,7 +101,6 @@ export class LongTermMemory extends ConversationAgent {
             name: 'memory'
           });
         
-        // Return response
-        return this.reply(allMemories, { status: 200, headers: { 'Content-Type': 'text/plain' } });
+        return this.reply(this.messages, sender);
       }
   }
