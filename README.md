@@ -1,5 +1,5 @@
 # CloudGen
-**Status: Experimental 🧪** - This project is in early stages of development. Some feature may not work as expected.
+**Status: Experimental 🧪** - This project is in early stages of development. Some features may not work as expected.
 
 An AI agent framework built for the Cloudflare Developer Platform. This project is early and will include more examples shortly.
 
