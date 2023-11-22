@@ -6,3 +6,5 @@ package-lock.json
 wrangler.toml
 .DS_Store  # macOS
 Thumbs.db  # Windows
+examples/.wrangler/
+examples/wrangler.toml/
