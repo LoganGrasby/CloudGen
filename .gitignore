@@ -8,3 +8,4 @@ wrangler.toml
 Thumbs.db  # Windows
 examples/.wrangler/
 examples/wrangler.toml/
+.wrangler/
