@@ -4,8 +4,8 @@ dist/
 build/
 package-lock.json
 wrangler.toml
-.DS_Store  # macOS
-Thumbs.db  # Windows
+.DS_Store
+Thumbs.db 
 examples/.wrangler/
-examples/wrangler.toml/
+examples/wrangler.toml
 .wrangler/

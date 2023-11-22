@@ -37,21 +37,20 @@ import { UserAgent, AssistantWithMemory } from 'cloudgen';
 
 export default {
   async fetch(request, env) {
-    try {
-      const { message, roomName } = await request.json();
-      if (!message || !roomName) {
-        throw new Error('roomName and message are required');
-      }
-      const response = await chatWithMemory(env, roomName, message)
-      return response;
-    } catch (error) {
-      console.error(error);
-      throw error;
+    if (request.method !== 'POST') {
+      return new Response('Unauthorized', { status: 401 });
     }
+
+    const { message, roomName } = await request.json();
+    if (!message || !roomName) {
+      throw new Error('roomName and message are required');
+    }
+    const response = await postMessage(env, roomName, message)
+    return response;
   },
 };
 
-async function chatWithMemory(env, roomName, message) {
+async function postMessage(env, roomName, message) {
   // Each unique roomName creates its own durable object.
   const id = env.MEMORY.idFromName(roomName);
   return env.MEMORY.get(id).fetch('https://azule', { 
@@ -68,9 +67,14 @@ export class Memory {
   }
 
   async fetch(request) {
+    try {
       const { message } = await request.json();
       const response = await this.startChat(message);
       return new Response(JSON.stringify(response), { status: 200 });
+    } catch (error) {
+      console.error(error);
+      throw error;
+    }
   }
 
   async startChat(message) {
@@ -86,13 +90,22 @@ export class Memory {
     });
 
     // We populate the recipient with message history.
-    await assistant.getMessages();
-
+    const messages = await assistant.getMessages();
     // The message is sent from the user to the recipient.
     let response = await user.startChat(assistant, message);
     return response;
   }
 }
+
+// Your wrangler.toml will need to include the durable object binding
+// [[migrations]]
+// tag = "v1" # Should be unique for each entry
+// new_classes = ["Memory"] # Array of new classes
+
+// [durable_objects]
+// bindings = [
+// {name = "MEMORY", class_name = "Memory"}
+// ]
 ```
 
 See /examples for more. More examples coming soon.

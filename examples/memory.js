@@ -62,7 +62,8 @@ export class Memory {
     return response;
   }
 }
-// wrangler.toml
+
+// Your wrangler.toml will need to include the durable object binding
 // [[migrations]]
 // tag = "v1" # Should be unique for each entry
 // new_classes = ["Memory"] # Array of new classes
