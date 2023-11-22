@@ -1,0 +1,224 @@
+
+--- 2023-11-22T16:38:07.634Z debug
+🐛 Writing logs to ".wrangler/logs/wrangler-2023-11-22_16-38-07_570.log"
+---
+
+--- 2023-11-22T16:38:07.634Z debug
+Failed to load .env file ".env": Error: ENOENT: no such file or directory, open '.env'
+    at Object.openSync (node:fs:581:18)
+    at Object.readFileSync (node:fs:457:35)
+    at tryLoadDotEnv (/Users/logangrasby/.nvm/versions/node/v21.1.0/lib/node_modules/wrangler/wrangler-dist/cli.js:122671:72)
+    at loadDotEnv (/Users/logangrasby/.nvm/versions/node/v21.1.0/lib/node_modules/wrangler/wrangler-dist/cli.js:122680:12)
+    at /Users/logangrasby/.nvm/versions/node/v21.1.0/lib/node_modules/wrangler/wrangler-dist/cli.js:146614:20
+    at /Users/logangrasby/.nvm/versions/node/v21.1.0/lib/node_modules/wrangler/wrangler-dist/cli.js:130116:16
+    at maybeAsyncResult (/Users/logangrasby/.nvm/versions/node/v21.1.0/lib/node_modules/wrangler/wrangler-dist/cli.js:128337:44)
+    at /Users/logangrasby/.nvm/versions/node/v21.1.0/lib/node_modules/wrangler/wrangler-dist/cli.js:130115:14
+    at /Users/logangrasby/.nvm/versions/node/v21.1.0/lib/node_modules/wrangler/wrangler-dist/cli.js:128324:22
+    at Array.reduce (<anonymous>) {
+  errno: -2,
+  code: 'ENOENT',
+  syscall: 'open',
+  path: '.env'
+}
+---
+
+--- 2023-11-22T16:38:07.639Z log
+ ⛅️ wrangler 3.17.0
+[38;2;255;136;0m-------------------[39m
+---
+
+--- 2023-11-22T16:38:07.667Z debug
+Retrieving cached values for userId from ../node_modules/.cache/wrangler
+---
+
+--- 2023-11-22T16:38:07.667Z debug
+Metrics dispatcher: Dispatching disabled - would have sent {"type":"event","name":"deploy worker script","properties":{"usesTypeScript":false}}.
+---
+
+--- 2023-11-22T16:38:07.668Z debug
+-- START CF API REQUEST: GET https://api.cloudflare.com/client/v4/accounts/d774efb67580065db389a53e38f58372/workers/standard
+---
+
+--- 2023-11-22T16:38:07.668Z debug
+HEADERS: omitted; set WRANGLER_LOG_SANITIZE=false to include sanitized data
+---
+
+--- 2023-11-22T16:38:07.668Z debug
+INIT: omitted; set WRANGLER_LOG_SANITIZE=false to include sanitized data
+---
+
+--- 2023-11-22T16:38:07.668Z debug
+-- END CF API REQUEST
+---
+
+--- 2023-11-22T16:38:08.341Z debug
+-- START CF API RESPONSE: OK 200
+---
+
+--- 2023-11-22T16:38:08.341Z debug
+HEADERS: omitted; set WRANGLER_LOG_SANITIZE=false to include sanitized data
+---
+
+--- 2023-11-22T16:38:08.341Z debug
+RESPONSE: omitted; set WRANGLER_LOG_SANITIZE=false to include sanitized data
+---
+
+--- 2023-11-22T16:38:08.341Z debug
+-- END CF API RESPONSE
+---
+
+--- 2023-11-22T16:38:08.341Z debug
+-- START CF API REQUEST: GET https://api.cloudflare.com/client/v4/accounts/d774efb67580065db389a53e38f58372/workers/services/cloudgentest
+---
+
+--- 2023-11-22T16:38:08.341Z debug
+HEADERS: omitted; set WRANGLER_LOG_SANITIZE=false to include sanitized data
+---
+
+--- 2023-11-22T16:38:08.341Z debug
+INIT: omitted; set WRANGLER_LOG_SANITIZE=false to include sanitized data
+---
+
+--- 2023-11-22T16:38:08.341Z debug
+-- END CF API REQUEST
+---
+
+--- 2023-11-22T16:38:08.555Z debug
+-- START CF API RESPONSE: OK 200
+---
+
+--- 2023-11-22T16:38:08.556Z debug
+HEADERS: omitted; set WRANGLER_LOG_SANITIZE=false to include sanitized data
+---
+
+--- 2023-11-22T16:38:08.556Z debug
+RESPONSE: omitted; set WRANGLER_LOG_SANITIZE=false to include sanitized data
+---
+
+--- 2023-11-22T16:38:08.556Z debug
+-- END CF API RESPONSE
+---
+
+--- 2023-11-22T16:38:08.583Z debug
+-- START CF API REQUEST: GET https://api.cloudflare.com/client/v4/accounts/d774efb67580065db389a53e38f58372/workers/scripts
+---
+
+--- 2023-11-22T16:38:08.584Z debug
+HEADERS: omitted; set WRANGLER_LOG_SANITIZE=false to include sanitized data
+---
+
+--- 2023-11-22T16:38:08.584Z debug
+INIT: omitted; set WRANGLER_LOG_SANITIZE=false to include sanitized data
+---
+
+--- 2023-11-22T16:38:08.584Z debug
+-- END CF API REQUEST
+---
+
+--- 2023-11-22T16:38:08.832Z debug
+-- START CF API RESPONSE: OK 200
+---
+
+--- 2023-11-22T16:38:08.832Z debug
+HEADERS: omitted; set WRANGLER_LOG_SANITIZE=false to include sanitized data
+---
+
+--- 2023-11-22T16:38:08.832Z debug
+RESPONSE: omitted; set WRANGLER_LOG_SANITIZE=false to include sanitized data
+---
+
+--- 2023-11-22T16:38:08.832Z debug
+-- END CF API RESPONSE
+---
+
+--- 2023-11-22T16:38:08.835Z log
+Your worker has access to the following bindings:
+- Durable Objects:
+  - MEMORY: Memory
+- AI:
+  - Name: AI
+---
+
+--- 2023-11-22T16:38:08.840Z log
+Total Upload: [32m91.67 KiB / gzip: 19.44 KiB[39m
+---
+
+--- 2023-11-22T16:38:08.841Z debug
+-- START CF API REQUEST: PUT https://api.cloudflare.com/client/v4/accounts/d774efb67580065db389a53e38f58372/workers/scripts/cloudgentest?include_subdomain_availability=true&excludeScript=true
+---
+
+--- 2023-11-22T16:38:08.841Z debug
+HEADERS: omitted; set WRANGLER_LOG_SANITIZE=false to include sanitized data
+---
+
+--- 2023-11-22T16:38:08.841Z debug
+INIT: omitted; set WRANGLER_LOG_SANITIZE=false to include sanitized data
+---
+
+--- 2023-11-22T16:38:08.841Z debug
+-- END CF API REQUEST
+---
+
+--- 2023-11-22T16:38:10.010Z debug
+-- START CF API RESPONSE: OK 200
+---
+
+--- 2023-11-22T16:38:10.011Z debug
+HEADERS: omitted; set WRANGLER_LOG_SANITIZE=false to include sanitized data
+---
+
+--- 2023-11-22T16:38:10.011Z debug
+RESPONSE: omitted; set WRANGLER_LOG_SANITIZE=false to include sanitized data
+---
+
+--- 2023-11-22T16:38:10.011Z debug
+-- END CF API RESPONSE
+---
+
+--- 2023-11-22T16:38:10.013Z debug
+-- START CF API REQUEST: GET https://api.cloudflare.com/client/v4/accounts/d774efb67580065db389a53e38f58372/workers/subdomain
+---
+
+--- 2023-11-22T16:38:10.013Z debug
+HEADERS: omitted; set WRANGLER_LOG_SANITIZE=false to include sanitized data
+---
+
+--- 2023-11-22T16:38:10.013Z debug
+INIT: omitted; set WRANGLER_LOG_SANITIZE=false to include sanitized data
+---
+
+--- 2023-11-22T16:38:10.013Z debug
+-- END CF API REQUEST
+---
+
+--- 2023-11-22T16:38:10.229Z debug
+-- START CF API RESPONSE: OK 200
+---
+
+--- 2023-11-22T16:38:10.229Z debug
+HEADERS: omitted; set WRANGLER_LOG_SANITIZE=false to include sanitized data
+---
+
+--- 2023-11-22T16:38:10.229Z debug
+RESPONSE: omitted; set WRANGLER_LOG_SANITIZE=false to include sanitized data
+---
+
+--- 2023-11-22T16:38:10.229Z debug
+-- END CF API RESPONSE
+---
+
+--- 2023-11-22T16:38:10.230Z log
+Uploaded cloudgentest (1.46 sec)
+---
+
+--- 2023-11-22T16:38:10.230Z log
+Published cloudgentest (0.22 sec)
+---
+
+--- 2023-11-22T16:38:10.230Z log
+  https://cloudgentest.azule.workers.dev
+---
+
+--- 2023-11-22T16:38:10.230Z log
+Current Deployment ID: fc98b9d1-e749-4458-ae84-bc6ede62e2f3
+---

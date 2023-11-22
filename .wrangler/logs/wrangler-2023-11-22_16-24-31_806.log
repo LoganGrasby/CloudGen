@@ -1,0 +1,77 @@
+
+--- 2023-11-22T16:24:31.865Z debug
+🐛 Writing logs to ".wrangler/logs/wrangler-2023-11-22_16-24-31_806.log"
+---
+
+--- 2023-11-22T16:24:31.865Z debug
+Failed to load .env file ".env": Error: ENOENT: no such file or directory, open '.env'
+    at Object.openSync (node:fs:581:18)
+    at Object.readFileSync (node:fs:457:35)
+    at tryLoadDotEnv (/Users/logangrasby/.nvm/versions/node/v21.1.0/lib/node_modules/wrangler/wrangler-dist/cli.js:122671:72)
+    at loadDotEnv (/Users/logangrasby/.nvm/versions/node/v21.1.0/lib/node_modules/wrangler/wrangler-dist/cli.js:122680:12)
+    at /Users/logangrasby/.nvm/versions/node/v21.1.0/lib/node_modules/wrangler/wrangler-dist/cli.js:146614:20
+    at /Users/logangrasby/.nvm/versions/node/v21.1.0/lib/node_modules/wrangler/wrangler-dist/cli.js:130116:16
+    at maybeAsyncResult (/Users/logangrasby/.nvm/versions/node/v21.1.0/lib/node_modules/wrangler/wrangler-dist/cli.js:128337:44)
+    at /Users/logangrasby/.nvm/versions/node/v21.1.0/lib/node_modules/wrangler/wrangler-dist/cli.js:130115:14
+    at /Users/logangrasby/.nvm/versions/node/v21.1.0/lib/node_modules/wrangler/wrangler-dist/cli.js:128324:22
+    at Array.reduce (<anonymous>) {
+  errno: -2,
+  code: 'ENOENT',
+  syscall: 'open',
+  path: '.env'
+}
+---
+
+--- 2023-11-22T16:24:31.871Z log
+ ⛅️ wrangler 3.17.0
+[38;2;255;136;0m-------------------[39m
+---
+
+--- 2023-11-22T16:24:31.904Z warn
+[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mThe entrypoint src/index.js has exports like an ES Module, but hasn't defined a default export like a module worker normally would. Building the worker using "service-worker" format...[0m
+
+
+---
+
+--- 2023-11-22T16:24:31.904Z debug
+Retrieving cached values for userId from node_modules/.cache/wrangler
+---
+
+--- 2023-11-22T16:24:31.904Z debug
+Metrics dispatcher: Dispatching disabled - would have sent {"type":"event","name":"run dev","properties":{"local":true,"usesTypeScript":false}}.
+---
+
+--- 2023-11-22T16:24:31.905Z debug
+Failed to load .env file "/Users/logangrasby/Desktop/AzuleAgentGen/cloudgen/.dev.vars": Error: ENOENT: no such file or directory, open '/Users/logangrasby/Desktop/AzuleAgentGen/cloudgen/.dev.vars'
+    at Object.openSync (node:fs:581:18)
+    at Object.readFileSync (node:fs:457:35)
+    at tryLoadDotEnv (/Users/logangrasby/.nvm/versions/node/v21.1.0/lib/node_modules/wrangler/wrangler-dist/cli.js:122671:72)
+    at loadDotEnv (/Users/logangrasby/.nvm/versions/node/v21.1.0/lib/node_modules/wrangler/wrangler-dist/cli.js:122680:12)
+    at getVarsForDev (/Users/logangrasby/.nvm/versions/node/v21.1.0/lib/node_modules/wrangler/wrangler-dist/cli.js:150297:18)
+    at getBindings (/Users/logangrasby/.nvm/versions/node/v21.1.0/lib/node_modules/wrangler/wrangler-dist/cli.js:151219:10)
+    at getBindingsAndAssetPaths (/Users/logangrasby/.nvm/versions/node/v21.1.0/lib/node_modules/wrangler/wrangler-dist/cli.js:151176:20)
+    at getDevReactElement (/Users/logangrasby/.nvm/versions/node/v21.1.0/lib/node_modules/wrangler/wrangler-dist/cli.js:150840:40)
+    at startDev (/Users/logangrasby/.nvm/versions/node/v21.1.0/lib/node_modules/wrangler/wrangler-dist/cli.js:150903:60)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5) {
+  errno: -2,
+  code: 'ENOENT',
+  syscall: 'open',
+  path: '/Users/logangrasby/Desktop/AzuleAgentGen/cloudgen/.dev.vars'
+}
+---
+
+--- 2023-11-22T16:24:31.905Z log
+Your worker has access to the following bindings:
+- AI:
+  - Name: AI
+---
+
+--- 2023-11-22T16:24:31.944Z log
+[2m⎔ Starting local server...[22m
+---
+
+--- 2023-11-22T16:24:31.945Z warn
+[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mWorkers AI is not currently supported in local mode. Please use --remote to work with it.[0m
+
+
+---

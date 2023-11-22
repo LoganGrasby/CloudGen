@@ -6,8 +6,8 @@ export class AssistantAgent extends ConversationAgent {
       state: {},
       systemMessage: `You are a friendly AI`,
       llmConfig: {
-        provider: 'openai',
-        model: 'gpt-3.5-turbo',
+        provider: 'cloudflare',
+        model: '@cf/mistral/mistral-7b-instruct-v0.1',
       },
       maxConsecutiveAutoReply: null,
     };

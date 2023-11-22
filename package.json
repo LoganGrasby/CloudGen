@@ -1,15 +1,13 @@
 {
   "name": "cloudgen",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "A framework for building AI agents designed for Cloudflare",
   "main": "src/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {
-    "@cloudflare/ai": "^1.0.22",
-    "cheerio": "^1.0.0-rc.12",
-    "postal-mime": "^1.0.16"
+    "@cloudflare/ai": "^1.0.32"
   },
   "author": "Logan Grasby",
   "license": "Apache 2.0"

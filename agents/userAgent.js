@@ -6,8 +6,8 @@ export class UserAgent extends ConversationAgent {
         state: {},
         systemMessage: `The user who we want to reply to.`,
         llmConfig: {
-          provider: 'openai',
-          model: 'gpt-3.5-turbo',
+          provider: 'cloudflare',
+          model: '@cf/mistral/mistral-7b-instruct-v0.1',
         },
         maxConsecutiveAutoReply: null,
         trigger: null,

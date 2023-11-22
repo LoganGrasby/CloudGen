@@ -7,13 +7,11 @@ export class AssistantWithMemory extends ConversationAgent {
       systemMessage: `You are a friendly AI`,
       llmConfig: {
         provider: 'cloudflare',
-        model: '@cf/meta/llama-2-7b-chat-int8',
+        model: '@cf/meta/llama-2-7b-chat-fp16',
       },
       maxConsecutiveAutoReply: null,
     };
-
     const mergedConfig = { ...defaultConfig, ...config };
-
     super(env, name, mergedConfig, groupChat);
   }
 

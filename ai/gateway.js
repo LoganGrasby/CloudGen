@@ -10,11 +10,9 @@ export class AIGateway {
   }
 
   async generateCloudflareReply(messages) {
-    //wrangler.toml
-    //[ai]
-    //binding = "AI"
     const ai = new Ai(this.env.AI);
-    const { response: reply } = await ai.run('@cf/meta/llama-2-7b-chat-int8', {
+    console.log(messages)
+    const { response: reply } = await ai.run(this.model || '@cf/meta/llama-2-7b-chat-fp16', {
       messages: messages,
     });
     return { content: reply };

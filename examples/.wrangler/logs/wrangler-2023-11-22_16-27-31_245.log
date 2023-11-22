@@ -1,0 +1,281 @@
+
+--- 2023-11-22T16:27:31.303Z debug
+🐛 Writing logs to ".wrangler/logs/wrangler-2023-11-22_16-27-31_245.log"
+---
+
+--- 2023-11-22T16:27:31.303Z debug
+Failed to load .env file ".env": Error: ENOENT: no such file or directory, open '.env'
+    at Object.openSync (node:fs:581:18)
+    at Object.readFileSync (node:fs:457:35)
+    at tryLoadDotEnv (/Users/logangrasby/.nvm/versions/node/v21.1.0/lib/node_modules/wrangler/wrangler-dist/cli.js:122671:72)
+    at loadDotEnv (/Users/logangrasby/.nvm/versions/node/v21.1.0/lib/node_modules/wrangler/wrangler-dist/cli.js:122680:12)
+    at /Users/logangrasby/.nvm/versions/node/v21.1.0/lib/node_modules/wrangler/wrangler-dist/cli.js:146614:20
+    at /Users/logangrasby/.nvm/versions/node/v21.1.0/lib/node_modules/wrangler/wrangler-dist/cli.js:130116:16
+    at maybeAsyncResult (/Users/logangrasby/.nvm/versions/node/v21.1.0/lib/node_modules/wrangler/wrangler-dist/cli.js:128337:44)
+    at /Users/logangrasby/.nvm/versions/node/v21.1.0/lib/node_modules/wrangler/wrangler-dist/cli.js:130115:14
+    at /Users/logangrasby/.nvm/versions/node/v21.1.0/lib/node_modules/wrangler/wrangler-dist/cli.js:128324:22
+    at Array.reduce (<anonymous>) {
+  errno: -2,
+  code: 'ENOENT',
+  syscall: 'open',
+  path: '.env'
+}
+---
+
+--- 2023-11-22T16:27:31.309Z log
+ ⛅️ wrangler 3.17.0
+[38;2;255;136;0m-------------------[39m
+---
+
+--- 2023-11-22T16:27:31.319Z debug
+Retrieving cached values for userId from ../node_modules/.cache/wrangler
+---
+
+--- 2023-11-22T16:27:31.319Z debug
+Metrics dispatcher: Dispatching disabled - would have sent {"type":"event","name":"run dev","properties":{"local":false,"usesTypeScript":false}}.
+---
+
+--- 2023-11-22T16:27:31.319Z debug
+Failed to load .env file "/Users/logangrasby/Desktop/AzuleAgentGen/cloudgen/examples/.dev.vars": Error: ENOENT: no such file or directory, open '/Users/logangrasby/Desktop/AzuleAgentGen/cloudgen/examples/.dev.vars'
+    at Object.openSync (node:fs:581:18)
+    at Object.readFileSync (node:fs:457:35)
+    at tryLoadDotEnv (/Users/logangrasby/.nvm/versions/node/v21.1.0/lib/node_modules/wrangler/wrangler-dist/cli.js:122671:72)
+    at loadDotEnv (/Users/logangrasby/.nvm/versions/node/v21.1.0/lib/node_modules/wrangler/wrangler-dist/cli.js:122680:12)
+    at getVarsForDev (/Users/logangrasby/.nvm/versions/node/v21.1.0/lib/node_modules/wrangler/wrangler-dist/cli.js:150297:18)
+    at getBindings (/Users/logangrasby/.nvm/versions/node/v21.1.0/lib/node_modules/wrangler/wrangler-dist/cli.js:151219:10)
+    at getBindingsAndAssetPaths (/Users/logangrasby/.nvm/versions/node/v21.1.0/lib/node_modules/wrangler/wrangler-dist/cli.js:151176:20)
+    at getDevReactElement (/Users/logangrasby/.nvm/versions/node/v21.1.0/lib/node_modules/wrangler/wrangler-dist/cli.js:150840:40)
+    at startDev (/Users/logangrasby/.nvm/versions/node/v21.1.0/lib/node_modules/wrangler/wrangler-dist/cli.js:150903:60)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5) {
+  errno: -2,
+  code: 'ENOENT',
+  syscall: 'open',
+  path: '/Users/logangrasby/Desktop/AzuleAgentGen/cloudgen/examples/.dev.vars'
+}
+---
+
+--- 2023-11-22T16:27:31.319Z log
+Your worker has access to the following bindings:
+- Durable Objects:
+  - MEMORY: Memory
+- AI:
+  - Name: AI
+---
+
+--- 2023-11-22T16:27:31.344Z debug
+-- START CF API REQUEST: GET https://api.cloudflare.com/client/v4/accounts/d774efb67580065db389a53e38f58372/workers/subdomain/edge-preview
+---
+
+--- 2023-11-22T16:27:31.345Z debug
+HEADERS: omitted; set WRANGLER_LOG_SANITIZE=false to include sanitized data
+---
+
+--- 2023-11-22T16:27:31.345Z debug
+INIT: omitted; set WRANGLER_LOG_SANITIZE=false to include sanitized data
+---
+
+--- 2023-11-22T16:27:31.345Z debug
+-- END CF API REQUEST
+---
+
+--- 2023-11-22T16:27:31.350Z log
+⬣ Listening at http://*:8787
+---
+
+--- 2023-11-22T16:27:31.351Z log
+- http://127.0.0.1:8787
+---
+
+--- 2023-11-22T16:27:31.351Z log
+- http://10.0.0.253:8787
+---
+
+--- 2023-11-22T16:27:31.351Z log
+- http://localhost:8787
+---
+
+--- 2023-11-22T16:27:31.351Z log
+- http://[::1]:8787
+---
+
+--- 2023-11-22T16:27:31.891Z debug
+-- START CF API RESPONSE: OK 200
+---
+
+--- 2023-11-22T16:27:31.892Z debug
+HEADERS: omitted; set WRANGLER_LOG_SANITIZE=false to include sanitized data
+---
+
+--- 2023-11-22T16:27:31.892Z debug
+RESPONSE: omitted; set WRANGLER_LOG_SANITIZE=false to include sanitized data
+---
+
+--- 2023-11-22T16:27:31.892Z debug
+-- END CF API RESPONSE
+---
+
+--- 2023-11-22T16:27:31.892Z debug
+-- START EXCHANGE API REQUEST: omitted; set WRANGLER_LOG_SANITIZE=false to include sanitized data
+---
+
+--- 2023-11-22T16:27:31.892Z debug
+-- END EXCHANGE API REQUEST
+---
+
+--- 2023-11-22T16:27:32.238Z debug
+-- START EXCHANGE API RESPONSE: OK 200
+---
+
+--- 2023-11-22T16:27:32.239Z debug
+HEADERS: {}
+---
+
+--- 2023-11-22T16:27:32.239Z debug
+RESPONSE: omitted; set WRANGLER_LOG_SANITIZE=false to include sanitized data
+---
+
+--- 2023-11-22T16:27:32.239Z debug
+-- END EXCHANGE API RESPONSE
+---
+
+--- 2023-11-22T16:27:32.251Z log
+Total Upload: [32m93.30 KiB / gzip: 19.93 KiB[39m
+---
+
+--- 2023-11-22T16:27:32.252Z debug
+-- START CF API REQUEST: POST https://api.cloudflare.com/client/v4/accounts/d774efb67580065db389a53e38f58372/workers/scripts/cloudgentest/edge-preview
+---
+
+--- 2023-11-22T16:27:32.252Z debug
+HEADERS: omitted; set WRANGLER_LOG_SANITIZE=false to include sanitized data
+---
+
+--- 2023-11-22T16:27:32.252Z debug
+INIT: omitted; set WRANGLER_LOG_SANITIZE=false to include sanitized data
+---
+
+--- 2023-11-22T16:27:32.252Z debug
+-- END CF API REQUEST
+---
+
+--- 2023-11-22T16:27:33.713Z debug
+-- START CF API RESPONSE: OK 200
+---
+
+--- 2023-11-22T16:27:33.713Z debug
+HEADERS: omitted; set WRANGLER_LOG_SANITIZE=false to include sanitized data
+---
+
+--- 2023-11-22T16:27:33.713Z debug
+RESPONSE: omitted; set WRANGLER_LOG_SANITIZE=false to include sanitized data
+---
+
+--- 2023-11-22T16:27:33.713Z debug
+-- END CF API RESPONSE
+---
+
+--- 2023-11-22T16:27:33.713Z debug
+Checking if domain has Access enabled: e968825f901a4245887c75e01ca27e80.azule.workers.dev
+---
+
+--- 2023-11-22T16:27:33.713Z debug
+Access switch not cached for: e968825f901a4245887c75e01ca27e80.azule.workers.dev
+---
+
+--- 2023-11-22T16:27:33.778Z debug
+Caching access switch for: e968825f901a4245887c75e01ca27e80.azule.workers.dev
+---
+
+--- 2023-11-22T16:27:33.782Z debug
+PREVIEW URL: https://cloudgentest.azule.workers.dev
+---
+
+--- 2023-11-22T16:27:33.783Z debug
+Checking if domain has Access enabled: cloudgentest.azule.workers.dev
+---
+
+--- 2023-11-22T16:27:33.783Z debug
+Access switch not cached for: cloudgentest.azule.workers.dev
+---
+
+--- 2023-11-22T16:27:33.961Z debug
+Caching access switch for: cloudgentest.azule.workers.dev
+---
+
+--- 2023-11-22T16:27:46.951Z debug
+Checking if domain has Access enabled: cloudgentest.azule.workers.dev
+---
+
+--- 2023-11-22T16:27:46.952Z debug
+Using cached Access switch for: cloudgentest.azule.workers.dev false
+---
+
+--- 2023-11-22T16:27:46.959Z debug
+WORKER REQUEST 9:27:46 AM GET /
+---
+
+--- 2023-11-22T16:27:46.959Z debug
+HEADERS omitted; set WRANGLER_LOG_SANITIZE=false to include sanitized data
+---
+
+--- 2023-11-22T16:27:46.959Z debug
+PREVIEW TOKEN omitted; set WRANGLER_LOG_SANITIZE=false to include sanitized data
+---
+
+--- 2023-11-22T16:27:47.125Z error
+[31m✘ [41;31m[[41;97mERROR[41;31m][0m [1mUncaught (in promise) SyntaxError: Unexpected end of JSON input[0m
+
+      at async Object.fetch
+  (file:///Users/logangrasby/Desktop/AzuleAgentGen/cloudgen/examples/.wrangler/tmp/dev-dsmAnN/memory.js:3413:35)
+
+
+---
+
+--- 2023-11-22T16:27:47.126Z error
+[31m✘ [41;31m[[41;97mERROR[41;31m][0m [1mUncaught (in response) SyntaxError: Unexpected end of JSON input[0m
+
+
+---
+
+--- 2023-11-22T16:27:47.127Z log
+9:27:47 AM GET / 500
+---
+
+--- 2023-11-22T16:27:47.287Z debug
+Checking if domain has Access enabled: cloudgentest.azule.workers.dev
+---
+
+--- 2023-11-22T16:27:47.287Z debug
+Using cached Access switch for: cloudgentest.azule.workers.dev false
+---
+
+--- 2023-11-22T16:27:47.287Z debug
+WORKER REQUEST 9:27:47 AM GET /favicon.ico
+---
+
+--- 2023-11-22T16:27:47.288Z debug
+HEADERS omitted; set WRANGLER_LOG_SANITIZE=false to include sanitized data
+---
+
+--- 2023-11-22T16:27:47.288Z debug
+PREVIEW TOKEN omitted; set WRANGLER_LOG_SANITIZE=false to include sanitized data
+---
+
+--- 2023-11-22T16:27:47.359Z log
+9:27:47 AM GET /favicon.ico 500
+---
+
+--- 2023-11-22T16:27:47.362Z error
+[31m✘ [41;31m[[41;97mERROR[41;31m][0m [1mUncaught (in promise) SyntaxError: Unexpected end of JSON input[0m
+
+      at async Object.fetch
+  (file:///Users/logangrasby/Desktop/AzuleAgentGen/cloudgen/examples/.wrangler/tmp/dev-dsmAnN/memory.js:3413:35)
+
+
+---
+
+--- 2023-11-22T16:27:47.362Z error
+[31m✘ [41;31m[[41;97mERROR[41;31m][0m [1mUncaught (in response) SyntaxError: Unexpected end of JSON input[0m
+
+
+---

@@ -1,5 +1,4 @@
 import { Ai } from '@cloudflare/ai'
-import cheerio from 'cheerio'
 
 export class ResearchHelper { 
     constructor(env) {
@@ -16,11 +15,7 @@ export class ResearchHelper {
         let searchResults = [];
         for (const query of queriesToProcess) {
           let result;
-          if (resource === 'Research Papers') {
-            result = await this.arxivSearch(query);
-          } else if (resource === 'Google Search') {
-            result = await this.googleSearch(query);
-          }
+          result = await this.googleSearch(query);
           searchResults.push(...result);
         }
         return searchResults;
@@ -45,7 +40,7 @@ export class ResearchHelper {
         }
       }
       async googleSearch(query) {
-        const url = `https://customsearch.googleapis.com/customsearch/v1?q=${encodeURIComponent(query)}&cx=${this.env.cx}&key=${this.env.googleCustomSearchAPI}`;
+        const url = `https://customsearch.googleapis.com/customsearch/v1?q=${encodeURIComponent(query)}&cx=${this.env.CX}&key=${this.env.GOOGLE_SEARCH_API_KEY}`;
         const response = await fetch(url, {
           method: 'GET',
           headers: {
@@ -60,30 +55,30 @@ export class ResearchHelper {
           formattedUrl: item.formattedUrl,
         })).slice(0, 5);
       }
-
-    async arxivSearch(query) {
-        const response = await fetch(`http://export.arxiv.org/api/query?search_query=all:${encodeURIComponent(query)}&start=0&max_results=1`);
-        
-        if (!response.ok) {
-        throw new Error(`HTTP error! status: ${response.status}`);
-        }
-        
-        const xmlData = await response.text(); 
-        const $ = cheerio.load(xmlData, { xmlMode: true });
-    
-        const papers = [];
-    
-        $('entry').each(function() {
-        const id = $(this).find('id').text().replace('http://arxiv.org/abs/', '');
-        const title = $(this).find('title').text().trim();
-        const summary = $(this).find('summary').text().trim();
-    
-        papers.push({
-            id: id,
-            title: title,
-            summary: summary
-        });
-        });
-        return papers;
     }
-}
+
+    // async arxivSearch(query) {
+    //     const response = await fetch(`http://export.arxiv.org/api/query?search_query=all:${encodeURIComponent(query)}&start=0&max_results=1`);
+        
+    //     if (!response.ok) {
+    //     throw new Error(`HTTP error! status: ${response.status}`);
+    //     }
+        
+    //     const xmlData = await response.text(); 
+    //     const $ = cheerio.load(xmlData, { xmlMode: true });
+    
+    //     const papers = [];
+    
+    //     $('entry').each(function() {
+    //     const id = $(this).find('id').text().replace('http://arxiv.org/abs/', '');
+    //     const title = $(this).find('title').text().trim();
+    //     const summary = $(this).find('summary').text().trim();
+    
+    //     papers.push({
+    //         id: id,
+    //         title: title,
+    //         summary: summary
+    //     });
+    //     });
+    //     return papers;
+    // }
