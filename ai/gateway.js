@@ -18,6 +18,49 @@ export class AIGateway {
     return { content: reply };
   }
 
+  async generateGoogleReply(messages) {
+    let url = 'https://generativelanguage.googleapis.com/v1beta/models/';
+    url += this.model === 'gemini-pro-vision' ? 'gemini-pro-vision' : 'gemini-pro';
+    url += ':generateContent';
+  
+    let data;
+    const lastMessage = messages[messages.length - 1];
+  
+    if (lastMessage.inline_data) {
+      data = {
+        contents: [
+          {
+            parts: [
+              { text: lastMessage.content },
+              { inline_data: lastMessage.inline_data },
+            ],
+          },
+        ],
+      };
+    } else {
+      data = {
+        contents: messages.map(message => ({
+          role: message.role === 'assistant' ? 'model' : message.role,
+          parts: [{ text: message.content }],
+        })),
+      };
+    }
+  
+    const strData = JSON.stringify(data);
+    const options = {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${this.env.GOOGLE_API_KEY}`,
+      },
+      body: strData,
+    };
+  
+    const response = await fetch(url, options);
+    const resp = await response.json();
+    return { content: resp.text };
+  }
+
   async generateOaiReply(messages) {
     const url = 'https://api.openai.com/v1/chat/completions';
     const data = {
@@ -106,10 +149,12 @@ export class AIGateway {
       throw new Error('Invalid input: Messages must be an array of objects');
     }
     switch (this.provider) {
-      case 'openai':
-        return this.generateOaiReply(messages, model);
       case 'cloudflare':
         return this.generateCloudflareReply(messages, model);
+      case 'google':
+        return this.generateGoogleReply(messages, model);
+      case 'openai':
+        return this.generateOaiReply(messages, model);
       case 'perplexity':
         return this.generatePerplexityReply(messages, model);
       default:

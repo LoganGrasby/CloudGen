@@ -7,5 +7,6 @@ wrangler.toml
 .DS_Store
 Thumbs.db 
 examples/.wrangler/
+examples/node_modules/
 examples/wrangler.toml
 .wrangler/
